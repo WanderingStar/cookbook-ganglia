@@ -23,5 +23,5 @@ describe_recipe 'ganglia::default' do
     it 'creates conf file' do
       assert file('/etc/ganglia./gmond.conf').must_exist
     end
-
+  end
 end
