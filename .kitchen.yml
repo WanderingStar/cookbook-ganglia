@@ -23,19 +23,19 @@ platforms:
 
 suites:
 - name: default
-  run_list: ["recipe[ganglia]"]
+  run_list: ["recipe[ganglia]", "recipe[minitest-handler]"]
   attributes: {}
 
 - name: gmetad
-  run_list: ["recipe[ganglia::gmetad]"]
+  run_list: ["recipe[ganglia::gmetad]", "recipe[minitest-handler]"]
   attributes: {}
 
 - name: web
-  run_list: ["recipe[ganglia::web]"]
+  run_list: ["recipe[ganglia::web]", "recipe[minitest-handler]"]
   attributes: {}
 
 - name: graphite 
-  run_list: ["recipe[ganglia::graphite]"]
+  run_list: ["recipe[ganglia::graphite]", "recipe[minitest-handler]"]
   attributes: {}
 
 
