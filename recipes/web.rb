@@ -18,11 +18,25 @@ when "redhat", "centos", "fedora"
   package "php"
   include_recipe "ganglia::source"
   include_recipe "ganglia::gmetad"
+ 
+  remote_file "/usr/src/ganglia-#{node[:ganglia][:web_version]}.tar.gz" do
+    source node[:ganglia][:web_uri]
+    checksum node[:ganglia][:web_checksum]
+  end
+
+  src_path = "/usr/src/ganglia-#{node[:ganglia][:web_version]}"
+
+  execute "untar ganglia" do
+    command "tar xzf ganglia-#{node[:ganglia][:web_version]}.tar.gz"
+    creates src_path
+    cwd "/usr/src"
+  end
+
 
   execute "copy web directory" do
-    command "cp -r web /var/www/html/ganglia"
+    command "make install"
     creates "/var/www/html/ganglia"
-    cwd "/usr/src/ganglia-#{node[:ganglia][:version]}"
+    cwd "/usr/src/ganglia-#{node[:ganglia][:web_version]}"
   end
   conf_file = "/etc/httpd/sites-enabled/ganglia"
   content_location = "/var/www/html/ganglia"
