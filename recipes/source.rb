@@ -1,6 +1,6 @@
 include_recipe 'build-essential'
 
-if platform_family == "rhel"
+if node['platform_family'] == "rhel"
   include_recipe 'yum::epel'
 end
 
