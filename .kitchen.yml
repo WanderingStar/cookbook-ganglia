@@ -38,6 +38,6 @@ suites:
   run_list: ["recipe[ganglia::graphite]", "recipe[minitest-handler]"]
   attributes: {}
 
--name: server
+- name: server
   run_list: ["recipe[ganglia]", "recipe[ganglia::gmetad]", "recipe[ganglia::web]", "recipe[ganglia::graphite]", "recipe[minitest-handler]"]
   attributes: {}
