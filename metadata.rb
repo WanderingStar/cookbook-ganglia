@@ -10,7 +10,7 @@ version          "0.1.1"
   supports os
 end
 
-depends "epel"
+depends "yum"
 recommends "graphite"
 suggests "iptables"
 
