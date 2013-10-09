@@ -8,7 +8,7 @@ if platform?( "redhat", "centos", "fedora" )
 end
 
 if platform?( "redhat", "centos" )
-  include_recipe "yum::epel"
+  include_recipe 'yum::epel'
 end
 
 remote_file "/usr/src/ganglia-#{node[:ganglia][:version]}.tar.gz" do
