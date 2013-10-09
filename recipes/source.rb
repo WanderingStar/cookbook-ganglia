@@ -1,14 +1,14 @@
 include_recipe 'build-essential'
 
+if platform_family == "rhel"
+  include_recipe 'yum::epel'
+end
+
 if platform?( "redhat", "centos", "fedora" )
   package "apr-devel"
   package "libconfuse-devel"
   package "expat-devel"
   package "rrdtool-devel"
-end
-
-if platform?( "redhat", "centos" )
-  include_recipe 'yum::epel'
 end
 
 remote_file "/usr/src/ganglia-#{node[:ganglia][:version]}.tar.gz" do
