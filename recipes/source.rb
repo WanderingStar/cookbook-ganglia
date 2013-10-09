@@ -7,6 +7,10 @@ if platform?( "redhat", "centos", "fedora" )
   package "rrdtool-devel"
 end
 
+if platform?( "redhat", "centos" )
+  include_recipe "yum::epel"
+end
+
 remote_file "/usr/src/ganglia-#{node[:ganglia][:version]}.tar.gz" do
   source node[:ganglia][:uri]
   checksum node[:ganglia][:checksum]
