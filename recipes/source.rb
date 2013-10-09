@@ -1,3 +1,5 @@
+include_recipe 'build-essential'
+
 if platform?( "redhat", "centos", "fedora" )
   package "apr-devel"
   package "libconfuse-devel"
