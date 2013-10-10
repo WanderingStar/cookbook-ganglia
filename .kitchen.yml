@@ -24,26 +24,21 @@ platforms:
 suites:
 - name: default
   run_list: ["recipe[ganglia]", "recipe[minitest-handler]"]
-  attributes: {
-    "ganglia": {
-        "server_addresses": [ "localhost" ]
-    }, 
-    "build_essential": {"compiletime" : false}
-  }
+  attributes: {}
 
 - name: gmetad
   run_list: ["recipe[ganglia::gmetad]", "recipe[minitest-handler]"]
-  attributes: {"build_essential": {"compiletime" : false}}
+  attributes: {}
 
 - name: web
   run_list: ["recipe[ganglia::web]", "recipe[minitest-handler]"]
-  attributes: {"build_essential": {"compiletime" : false}}
+  attributes: {}
 
 - name: graphite 
   run_list: ["recipe[ganglia::graphite]", "recipe[minitest-handler]"]
-  attributes: {"build_essential": {"compiletime" : false}} 
+  attributes: {}
 
 - name: server
   run_list: ["recipe[ganglia]", "recipe[ganglia::gmetad]", "recipe[ganglia::web]", "recipe[ganglia::graphite]", "recipe[minitest-handler]"]
-  attributes: {"build_essential": {"compiletime" : false}}
+  attributes: {}
 
