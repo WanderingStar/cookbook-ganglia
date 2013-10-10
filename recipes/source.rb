@@ -25,7 +25,7 @@ execute "untar ganglia" do
 end
 
 execute "configure ganglia build" do
-  command "./configure --with-gmetad --with-libpcre=no --sysconfdir=/etc/ganglia"
+  command "./configure --with-gmetad --with-libpcre=no --sysconfdir=/etc/ganglia --prefix=/"
   creates "#{src_path}/config.log"
   cwd src_path
 end
