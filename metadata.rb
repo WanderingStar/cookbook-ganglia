@@ -9,8 +9,9 @@ version          "0.1.1"
 %w{ debian ubuntu redhat centos fedora }.each do |os|
   supports os
 end
-
-depends "yum"
+%w{apache2 yum}.each do |cb|
+  depends cb
+end
 recommends "graphite"
 suggests "iptables"
 
