@@ -33,16 +33,17 @@ suites:
 
 - name: gmetad
   run_list: ["recipe[ganglia::gmetad]", "recipe[minitest-handler]"]
-  attributes: {}
+  attributes: {"build_essential": {"compiletime" : false}}
 
 - name: web
   run_list: ["recipe[ganglia::web]", "recipe[minitest-handler]"]
-  attributes: {}
+  attributes: {"build_essential": {"compiletime" : false}}
 
 - name: graphite 
   run_list: ["recipe[ganglia::graphite]", "recipe[minitest-handler]"]
-  attributes: {}
+  attributes: {"build_essential": {"compiletime" : false}} 
 
 - name: server
   run_list: ["recipe[ganglia]", "recipe[ganglia::gmetad]", "recipe[ganglia::web]", "recipe[ganglia::graphite]", "recipe[minitest-handler]"]
-  attributes: {}
+  attributes: {"build_essential": {"compiletime" : false}}
+
