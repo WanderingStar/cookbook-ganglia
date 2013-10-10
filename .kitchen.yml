@@ -23,22 +23,22 @@ platforms:
 
 suites:
 - name: default
-  run_list: ["recipe[ganglia]", "recipe[minitest-handler]"]
+  run_list: ["recipe[chef-solo-search]", "recipe[ganglia]", "recipe[minitest-handler]"]
   attributes: {}
 
 - name: gmetad
-  run_list: ["recipe[ganglia::gmetad]", "recipe[minitest-handler]"]
+  run_list: ["recipe[chef-solo-search]", "recipe[ganglia::gmetad]", "recipe[minitest-handler]"]
   attributes: {}
 
 - name: web
-  run_list: ["recipe[ganglia::web]", "recipe[minitest-handler]"]
+  run_list: ["recipe[chef-solo-search]", "recipe[ganglia::web]", "recipe[minitest-handler]"]
   attributes: {}
 
 - name: graphite 
-  run_list: ["recipe[ganglia::graphite]", "recipe[minitest-handler]"]
+  run_list: ["recipe[chef-solo-search]", "recipe[ganglia::graphite]", "recipe[minitest-handler]"]
   attributes: {}
 
 - name: server
-  run_list: ["recipe[ganglia]", "recipe[ganglia::gmetad]", "recipe[ganglia::web]", "recipe[ganglia::graphite]", "recipe[minitest-handler]"]
+  run_list: ["recipe[chef-solo-search]", "recipe[ganglia]", "recipe[ganglia::gmetad]", "recipe[ganglia::web]", "recipe[ganglia::graphite]", "recipe[minitest-handler]"]
   attributes: {}
 
