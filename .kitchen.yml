@@ -24,7 +24,12 @@ platforms:
 suites:
 - name: default
   run_list: ["recipe[ganglia]", "recipe[minitest-handler]"]
-  attributes: {}
+  attributes: {
+    "ganglia": {
+        "server_addresses": [ "localhost" ]
+    }, 
+    "build_essential": {"compiletime" : false}
+  }
 
 - name: gmetad
   run_list: ["recipe[ganglia::gmetad]", "recipe[minitest-handler]"]

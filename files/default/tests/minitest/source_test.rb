@@ -34,6 +34,6 @@ describe_recipe 'ganglia::source' do
 
   it 'symlinks lib and lib64' do
     link("/usr/lib/ganglia").must_exist.with(
-        :link_type, :symbolic).and(:to, "/usr/lib64/ganglia")
+        :link_type, :symbolic).and(:to, "/usr/local/lib64/ganglia")
   end
 end

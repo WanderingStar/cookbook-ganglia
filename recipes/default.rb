@@ -35,6 +35,10 @@ end
 
 directory "/etc/ganglia"
 
+link "/usr/sbin/gmond" do
+  to "/usr/local/sbin/gmond"
+end
+
 case node[:ganglia][:unicast]
 when true
   server_hosts = node[:ganglia][:server_addresses] || search(:node, "role:#{node['ganglia']['server_role']} AND chef_environment:#{node.chef_environment}").map {|node| node.ipaddress}
