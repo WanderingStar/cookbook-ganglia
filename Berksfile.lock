@@ -1,0 +1,40 @@
+{
+  "sources": {
+    "ganglia": {
+      "path": "."
+    },
+    "build-essential": {
+      "locked_version": "1.4.2",
+      "git": "git://github.com/opscode-cookbooks/build-essential.git",
+      "ref": "7f4d351036f10e7b641e1df137390491d6111669"
+    },
+    "minitest-handler": {
+      "locked_version": "1.0.1",
+      "git": "git://github.com/btm/minitest-handler-cookbook.git",
+      "ref": "7956b01a100d0c82dda0f0d5354c1762d8c055f4"
+    },
+    "yum": {
+      "locked_version": "2.3.5",
+      "git": "git://github.com/opscode-cookbooks/yum.git",
+      "ref": "02226feb54610a4d1ce887cfc2e0034446efb4e9"
+    },
+    "graphite": {
+      "locked_version": "0.4.3"
+    },
+    "python": {
+      "locked_version": "1.4.0"
+    },
+    "apache2": {
+      "locked_version": "1.8.4"
+    },
+    "runit": {
+      "locked_version": "1.3.0"
+    },
+    "memcached": {
+      "locked_version": "1.6.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
+    }
+  }
+}

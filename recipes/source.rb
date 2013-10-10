@@ -43,7 +43,7 @@ execute "install ganglia" do
 end
 
 link "/usr/lib/ganglia" do
-  to "/usr/lib64/ganglia"
+  to "/usr/local/lib64/ganglia"
   only_if do
     node[:kernel][:machine] == "x86_64" and
       platform?( "redhat", "centos", "fedora" )
