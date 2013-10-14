@@ -38,6 +38,10 @@ when false
   end
 end
 
+link "/usr/sbin/gmetad" do
+  to "/usr/local/sbin/gmetad"
+end
+
 service "gmetad" do
   supports :restart => true
   action [ :enable, :start ]
