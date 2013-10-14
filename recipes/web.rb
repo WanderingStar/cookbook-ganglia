@@ -36,7 +36,7 @@ when "redhat", "centos", "fedora"
   execute "copy web directory" do
     command "make install"
     creates "/var/www/html/ganglia"
-    cwd "/usr/src/ganglia-#{node[:ganglia][:web_version]}"
+    cwd "/usr/src/ganglia-web-#{node[:ganglia][:web_version]}"
   end
   conf_file = "/etc/httpd/sites-enabled/ganglia"
   content_location = "/var/www/html/ganglia"

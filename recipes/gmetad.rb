@@ -20,22 +20,27 @@ case node[:ganglia][:unicast]
 when true
   template "/etc/ganglia/gmetad.conf" do
     source "gmetad.conf.erb"
-    variables( :hosts => "localhost",
+    variables( {:hosts => "localhost",
                :grid_name => node[:ganglia][:grid_name],
-               :clusters => node[:ganglia][:clusters])
+               :clusters => node[:ganglia][:clusters]})
     notifies :restart, "service[gmetad]"
   end
   if node[:recipes].include? "iptables"
     include_recipe "ganglia::iptables"
   end
 when false
-  ips = search(:node, "*:*").map {|node| node.ipaddress}
+  ips = search(:node, "*:*").map {|node| node[:ipaddress]}
   template "/etc/ganglia/gmetad.conf" do
     source "gmetad.conf.erb"
-    variables( :hosts => ips.join(" "),
-               :cluster_name => node[:ganglia][:cluster_name])
+    variables({:hosts => ips.join(" "),
+               :clusters => node[:ganglia][:clusters],
+               :grid_name => node[:ganglia][:grid_name]})
     notifies :restart, "service[gmetad]"
   end
+end
+
+link "/usr/sbin/gmetad" do
+  to "/usr/local/sbin/gmetad"
 end
 
 service "gmetad" do
