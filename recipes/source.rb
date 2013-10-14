@@ -42,6 +42,10 @@ execute "install ganglia" do
   cwd src_path
 end
 
+link "/usr/sbin/gmond" do
+  to "/usr/local/sbin/gmond"
+end
+
 link "/usr/lib/ganglia" do
   to "/usr/local/lib64/ganglia"
   only_if do
