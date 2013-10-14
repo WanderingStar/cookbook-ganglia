@@ -62,6 +62,14 @@ suites:
 - name: server
   run_list: ["recipe[chef-solo-search]", "recipe[ganglia]", "recipe[ganglia::gmetad]", "recipe[ganglia::web]", "recipe[ganglia::graphite]", "recipe[minitest-handler]"]
   attributes: { "ganglia" :{
+                "grid_name": "test-grid",
+                "clusters":[{ "name": "local-0", "collector": "localhost" }]}
+
+}
+
+- name: server_unicast
+  run_list: ["recipe[chef-solo-search]", "recipe[ganglia]", "recipe[ganglia::gmetad]", "recipe[ganglia::web]", "recipe[ganglia::graphite]", "recipe[minitest-handler]"]
+  attributes: { "ganglia" :{
  		"grid_name": "test-grid",
 		"unicast" : true,
 		"clusters":[{ "name": "local-0", "collector": "localhost" }]}
