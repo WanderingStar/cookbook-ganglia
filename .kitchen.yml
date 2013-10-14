@@ -28,7 +28,11 @@ suites:
 
 - name: gmetad
   run_list: ["recipe[chef-solo-search]", "recipe[ganglia::gmetad]", "recipe[minitest-handler]"]
-  attributes: {}
+  data_bags_path: "test/databag"
+  attributes: { "ganglia" :{
+ 		"clusters":[{ "name": "local-0", "collector": "localhost" }]}
+
+}
 
 - name: web
   run_list: ["recipe[chef-solo-search]", "recipe[ganglia::web]", "recipe[minitest-handler]"]
