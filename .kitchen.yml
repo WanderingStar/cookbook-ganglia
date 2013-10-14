@@ -30,6 +30,7 @@ suites:
   run_list: ["recipe[chef-solo-search]", "recipe[ganglia::gmetad]", "recipe[minitest-handler]"]
   data_bags_path: "test/databag"
   attributes: { "ganglia" :{
+ 		"unicast":true,
  		"grid_name": "test-grid",
 		"clusters":[{ "name": "local-0", "collector": "localhost" }]}
 
@@ -37,7 +38,13 @@ suites:
 
 - name: web
   run_list: ["recipe[chef-solo-search]", "recipe[ganglia::web]", "recipe[minitest-handler]"]
-  attributes: {}
+  attributes: { "ganglia" :{
+		"unicate" :true,
+ 		"grid_name": "test-grid",
+		"server_addresses": [ "localhost" ],
+		"clusters":[{ "name": "local-0", "collector": "localhost" }]}
+
+}
 
 - name: graphite 
   run_list: ["recipe[chef-solo-search]", "recipe[ganglia::graphite]", "recipe[minitest-handler]"]
@@ -45,5 +52,9 @@ suites:
 
 - name: server
   run_list: ["recipe[chef-solo-search]", "recipe[ganglia]", "recipe[ganglia::gmetad]", "recipe[ganglia::web]", "recipe[ganglia::graphite]", "recipe[minitest-handler]"]
-  attributes: {}
+  attributes: { "ganglia" :{
+ 		"grid_name": "test-grid",
+		"clusters":[{ "name": "local-0", "collector": "localhost" }]}
+
+}
 
