@@ -13,5 +13,5 @@ end
   depends cb
 end
 recommends "graphite"
-suggests "iptables"
+depends "iptables"
 
