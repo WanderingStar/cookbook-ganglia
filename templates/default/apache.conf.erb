@@ -10,7 +10,7 @@ Alias /ganglia <%= @content_location -%>
       AuthOpenIDSingleIdP <%= openid['profile_url'] %>
     <% end -%>
     <% if openid['use_email_as_userid'] -%>
-      AuthOpenIDAXUsername email 
+      AuthOpenIDAXUsername email
     <% end -%>
     <% if openid['email_pattern'] -%>
       AuthOpenIDAXRequire email http://axschema.org/contact/email <%= openid['email_pattern'] %>
