@@ -8,3 +8,7 @@ default[:ganglia][:cluster_name] = "default"
 default[:ganglia][:unicast] = false
 default[:ganglia][:server_role] = "ganglia"
 default[:ganglia][:graphite_host] = "localhost"
+default[:ganglia][:mute] = "no"
+default[:ganglia][:deaf] = "no"
+default[:ganglia][:host_dmax] = 3600
+default[:ganglia][:host_tmax] = 40

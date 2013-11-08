@@ -6,9 +6,10 @@ globals {
   user = ganglia
   debug_level = 0
   max_udp_msg_len = 1472
-  mute = no
-  deaf = no
-  host_dmax = 0 /*secs */
+  mute = <%= node[:ganglia][:mute] %>
+  deaf = <%= node[:ganglia][:deaf] %>
+  host_dmax = <%= node[:ganglia][:host_dmax] %> /*secs */
+  host_tmax = <%= node[:ganglia][:host_tmax] %> /*secs */
   cleanup_threshold = 300 /*secs */
   gexec = no
   send_metadata_interval = 0
