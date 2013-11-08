@@ -37,7 +37,7 @@ directory "/etc/ganglia"
 
 case node[:ganglia][:unicast]
 when true
-  server_hosts = node[:ganglia][:server_addresses] || search(:node, "role:#{node['ganglia']['server_role']} AND chef_environment:#{node.chef_environment}").map {|node| node.ipaddress}
+  server_hosts = node[:ganglia][:server_addresses] || search(:node, "role:#{node[:ganglia][:server_role]} AND chef_environment:#{node.chef_environment}").map {|node| node[:ipaddress]}
   if server_hosts.empty? 
      server_hosts = [ "127.0.0.1" ]
   end
