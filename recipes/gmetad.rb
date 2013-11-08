@@ -28,7 +28,6 @@ when true
     include_recipe "ganglia::iptables"
   end
 when false
-  ips = search(:node, "*:*").map {|node| node[:ipaddress]}
   template "/etc/ganglia/gmetad.conf" do
     source "gmetad.conf.erb"
     variables({:clusters => node[:ganglia][:clusters],
