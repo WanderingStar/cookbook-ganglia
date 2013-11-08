@@ -17,10 +17,10 @@
 # limitations under the License.
 #
 
-case node[:platform]
-when "ubuntu", "debian"
+case node[:platform_family]
+when "debian"
   package "ganglia-monitor"
-when "redhat", "centos", "fedora"
+when "rhel","fedora"
   include_recipe "ganglia::source"
 
   execute "copy ganglia-monitor init script" do
@@ -37,7 +37,12 @@ directory "/etc/ganglia"
 
 case node[:ganglia][:unicast]
 when true
-  server_hosts = node[:ganglia][:server_addresses] || search(:node, "role:#{node['ganglia']['server_role']} AND chef_environment:#{node.chef_environment}").map {|node| node.ipaddress}
+  if Chef::Config[:solo]
+    server_hosts = node[:ganglia][:server_addresses]
+  else
+    server_hosts = node[:ganglia][:server_addresses] || search(:node, "role:#{node[:ganglia][:server_role]} AND chef_environment:#{node.chef_environment}").map {|node| node[:ipaddress]}
+  end
+  
   if server_hosts.empty? 
      server_hosts = [ "127.0.0.1" ]
   end

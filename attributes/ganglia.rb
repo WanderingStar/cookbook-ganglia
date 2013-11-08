@@ -7,3 +7,4 @@ default[:ganglia][:web_checksum] = "cd6948d4"
 default[:ganglia][:cluster_name] = "default"
 default[:ganglia][:unicast] = false
 default[:ganglia][:server_role] = "ganglia"
+default[:ganglia][:graphite_host] = "localhost"

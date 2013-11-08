@@ -13,7 +13,7 @@ when "ubuntu", "debian"
   conf_file = "/etc/apache2/sites-enabled/ganglia"
   content_location = "/usr/share/ganglia-webfrontend"
 
-when "redhat", "centos", "fedora"
+when "rhel", "fedora"
   package "httpd"
   package "php"
   include_recipe "ganglia::source"
@@ -57,7 +57,7 @@ link conf_file do
 end
 
 service "apache2" do
-  service_name "httpd" if platform?( "redhat", "centos", "fedora" )
+  service_name "httpd" if platform_family?( "rhel", "fedora" )
   supports :status => true, :restart => true, :reload => true
   action [ :enable, :start ]
 end

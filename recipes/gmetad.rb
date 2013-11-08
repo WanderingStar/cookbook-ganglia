@@ -1,7 +1,7 @@
-case node[:platform]
-when "ubuntu", "debian"
+case node[:platform_family]
+when "debian"
   package "gmetad"
-when "redhat", "centos", "fedora"
+when "rhel", "fedora"
   include_recipe "ganglia::source"
   execute "copy gmetad init script" do
     command "cp " +
@@ -20,20 +20,17 @@ case node[:ganglia][:unicast]
 when true
   template "/etc/ganglia/gmetad.conf" do
     source "gmetad.conf.erb"
-    variables( {:hosts => "localhost",
-               :grid_name => node[:ganglia][:grid_name],
-               :clusters => node[:ganglia][:clusters]})
+    variables( {:grid_name => node[:ganglia][:grid_name],
+                :clusters => node[:ganglia][:clusters]})
     notifies :restart, "service[gmetad]"
   end
   if node[:recipes].include? "iptables"
     include_recipe "ganglia::iptables"
   end
 when false
-  ips = search(:node, "*:*").map {|node| node[:ipaddress]}
   template "/etc/ganglia/gmetad.conf" do
     source "gmetad.conf.erb"
-    variables({:hosts => ips.join(" "),
-               :clusters => node[:ganglia][:clusters],
+    variables({:clusters => node[:ganglia][:clusters],
                :grid_name => node[:ganglia][:grid_name]})
     notifies :restart, "service[gmetad]"
   end
