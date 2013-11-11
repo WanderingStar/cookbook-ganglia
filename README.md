@@ -9,19 +9,15 @@ http://ganglia.sourceforge.net/
 *   SELinux must be disabled on CentOS
 *   iptables must allow access to port 80
 
-
 # USAGE:
 
-A run list with "[recipe](http://ganglia)" enables monitoring.
+A run list with "recipe[ganglia]" enables monitoring.
 
+A run list with "recipe[ganglia::gmetad]" enables the gmetad collector.
 
-A run list with "[recipe](ganglia::gmetad)" enables the gmetad collector.
+A run list with "recipe[ganglia::web]" enables the web interface.
 
-
-A run list with "[recipe](ganglia::web)" enables the web interface.
-
-
-A run list with "[recipe](ganglia::graphite)" enables graphite graphs.
+A run list with "recipe[ganglia::graphite]" enables graphite graphs.
 
 # ATTRIBUTES:
 
@@ -207,7 +203,7 @@ The content of 'options' will be passed to the templates
 
 # CAVEATS: 
 
-This cookbook has been tested on Ubuntu 10.04 and Centos 5.5.
+This cookbook has been tested on Debian 7.2, Ubuntu 10.04 and Centos 5.5.
 
 Search seems to takes a moment or two to index. You may need to converge again
 to see recently added nodes.
