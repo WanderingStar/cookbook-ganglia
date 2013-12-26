@@ -18,3 +18,5 @@ default[:ganglia][:gmond][:ttl] = 1
 default[:ganglia][:udp_send_channel] = []
 default[:ganglia][:udp_recv_channel] = []
 default[:ganglia][:tcp_accept_channel] = []
+default[:ganglia][:override_hostname] = node['fqdn']
+default[:ganglia][:override_ip] = false
