@@ -20,7 +20,7 @@
 case node[:platform_family]
 when "debian"
   package "ganglia-monitor"
-when "rhel","fedora"
+when "rhel","fedora", "centos"
   include_recipe "ganglia::source"
 
   execute "copy ganglia-monitor init script" do
