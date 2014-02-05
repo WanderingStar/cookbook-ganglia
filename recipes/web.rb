@@ -13,7 +13,7 @@ when "ubuntu", "debian"
   conf_file = "/etc/apache2/sites-enabled/ganglia"
   content_location = "/usr/share/ganglia-webfrontend"
 
-when "rhel", "fedora"
+when "rhel", "fedora", "centos"
   package "httpd"
   package "php"
   include_recipe "ganglia::source"
