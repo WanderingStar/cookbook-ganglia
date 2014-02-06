@@ -6,7 +6,6 @@ if node[:platform_family] == 'rhel'
   package 'libconfuse-devel'
   package 'expat-devel'
   package 'rrdtool-devel'
-  package 'python-devel'
 end
 
 remote_file "/usr/src/ganglia-#{node[:ganglia][:version]}.tar.gz" do
