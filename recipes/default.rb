@@ -40,7 +40,7 @@ when true
   if Chef::Config[:solo]
     server_hosts = node[:ganglia][:server_addresses]
   else
-    server_hosts = node[:ganglia][:server_addresses] || search(:node, "role:#{node[:ganglia][:server_role]} AND chef_environment:#{node.chef_environment}").map {|node| node[:ipaddress]}
+    server_hosts = node[:ganglia][:server_addresses] || search(:node, "role:#{node[:ganglia][:server_role]} AND chef_environment:#{node.chef_environment}").map {|node| node[:fqdn]}
   end
   
   if server_hosts.empty? 
