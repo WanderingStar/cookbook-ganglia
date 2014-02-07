@@ -7,13 +7,13 @@ then
   include_recipe "apache2::mod_auth_openid"
 end
 
-case node[:platform]
-when "ubuntu", "debian"
+case node[:platform_family]
+when "debian"
   package "ganglia-webfrontend"
   conf_file = "/etc/apache2/sites-enabled/ganglia"
   content_location = "/usr/share/ganglia-webfrontend"
 
-when "rhel", "fedora", "centos"
+when "rhel", "fedora"
   package "httpd"
   package "php"
   include_recipe "ganglia::source"
