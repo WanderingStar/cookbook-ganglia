@@ -7,6 +7,7 @@ if node[:platform_family] == 'rhel'
   package 'expat-devel'
   package 'rrdtool-devel'
   package 'python-devel'
+  package 'pcre-devel'
 end
 
 remote_file "/usr/src/ganglia-#{node[:ganglia][:version]}.tar.gz" do
@@ -23,7 +24,7 @@ execute "untar ganglia" do
 end
 
 execute "configure ganglia build" do
-  command "./configure --with-gmetad --with-libpcre=no --sysconfdir=/etc/ganglia"
+  command "./configure --with-gmetad --sysconfdir=/etc/ganglia"
   creates "#{src_path}/config.log"
   cwd src_path
 end
